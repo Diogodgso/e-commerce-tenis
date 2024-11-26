@@ -1,0 +1,40 @@
+<ion-content [fullscreen]="true">
+  <ion-toolbar>
+    <ion-menu-button slot="start"></ion-menu-button>
+    <ion-title class="titulo">Pagamento</ion-title>
+  </ion-toolbar>
+
+  <ion-card class="payment-container">
+    <form (ngSubmit)="onSubmit(paymentForm)" #paymentForm="ngForm">
+
+      <ion-input type="text" label="Nome no Cartão" label-placement="floating" fill="outline"
+        placeholder="Nome do cartão" required>
+      </ion-input>
+
+      <ion-input type="text" label="Número do Cartão" label-placement="floating" fill="outline"
+        placeholder="Número do cartão" required>
+      </ion-input>
+
+      <ion-input type="text" label="Data de Validade" label-placement="floating" fill="outline" placeholder="MM/AA"
+        required>
+      </ion-input>
+
+      <ion-input type="text" label="CVV" label-placement="floating" fill="outline" placeholder="CVV" required>
+      </ion-input>
+
+      <ion-button expand="full" type="submit" [disabled]="!paymentForm.valid">Salvar</ion-button>
+
+    </form>
+  </ion-card>
+  <ion-card *ngIf="savedCard">
+    <ion-card-header>
+      <ion-card-title>Dados do Cartão Salvo</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Nome no Cartão:</strong> {{ savedCard.cardName }}</p>
+      <p><strong>Número do Cartão:</strong> **** **** **** {{ savedCard.cardNumber }}</p>
+      <p><strong>Data de Validade:</strong> {{ savedCard.expiryDate }}</p>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

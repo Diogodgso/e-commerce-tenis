@@ -1,0 +1,51 @@
+.search-bar {
+  margin: 16px; /* Espaçamento da barra de pesquisa */
+}
+
+.item-list {
+  padding: 0 10px; /* Espaçamento lateral da lista */
+}
+
+.item-name {
+  font-weight: bold;
+  font-size: 1.0em; /* Tamanho maior para o nome do item */
+}
+
+.item-brand {
+  color: #666; /* Cor mais suave para a marca */
+  font-size: 0.9em; /* Tamanho menor para a marca */
+}
+
+.item-price {
+  font-weight: bold;
+  color: #6A0DAD; /* Cor do preço */
+}
+.botaoComprar {
+  margin-left: auto; /* Alinha o botão à direita */
+  background-color: #6A0DAD; /* Cor de fundo do botão */
+  color: white; /* Cor do texto */
+  border-radius: 5px; /* Bordas arredondadas */
+  padding: 5px 5px; /* Espaçamento interno do botão */
+}
+.custom {
+  width: 100px; /* ou um tamanho específico, como '200px' */
+  height: auto; /* mantém a proporção */
+  max-height: 200px; /* define uma altura máxima, se necessário */
+  object-fit: cover; /* adapta a imagem para preencher o espaço */
+}
+.imagemplazza{
+  width: 600px; /* Ajuste o tamanho conforme necessário */
+  height: auto; /* Mantém a proporção da imagem */
+  //margin-right: 100px;
+  max-height: 80px
+}
+ion-badge {
+  --color: white;
+  --padding-end: 5px;
+  --padding-start: 5px;
+}
+.tenis-card {
+  margin: 10px; /* Espaçamento entre os cards */
+  padding: 10px; /* Ajusta o espaçamento interno */
+  --background: #ffffff; /* Fundo do card */
+}

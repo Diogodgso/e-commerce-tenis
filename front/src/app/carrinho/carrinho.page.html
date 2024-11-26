@@ -1,0 +1,65 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="corpadrao">
+    <ion-menu-button slot="start"></ion-menu-button>
+    <ion-title class="titulo">Carrinho</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="voltar()">Voltar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!-- Condição para exibir a lista de itens ou a mensagem de carrinho vazio -->
+  <ion-list *ngIf="cart.length > 0; else emptyCart">
+    <ng-container *ngFor="let item of cart">
+      <ion-card>
+        <ion-item>
+          <ion-thumbnail slot="start" class="custom">
+            <img [src]="item.imageUrl" />
+          </ion-thumbnail>
+          <ion-label>
+            <h2 class="nome">{{ item.name }}</h2>
+            <p>Tamanho: {{ item.tamanho }}</p>
+            <p>Quantidade: {{ item.quantity }}</p>
+            <p>Preço: {{ item.valor | currency: 'BRL' }}</p>
+          </ion-label>
+        </ion-item>
+
+        <!-- Controles de quantidade -->
+        <div class="quantidade-controls">
+          <ion-button (click)="diminuirQuant(item)" [disabled]="item.quantity <= 1" class="botaoquant" fill="clear">
+            <ion-icon name="remove-circle-outline"></ion-icon>
+          </ion-button>
+          <span class="quantidade">{{ item.quantity }}</span>
+          <ion-button (click)="aumentarQuant(item)" class="botaoquant" fill="clear">
+            <ion-icon name="add-circle-outline"></ion-icon>
+          </ion-button>
+          <!-- Botão de remover item do carrinho -->
+          <ion-button color="danger" slot="end" (click)="removerCarrinho(item)" class="remover-botao">Remover</ion-button>
+        </div>
+      </ion-card>
+    </ng-container>
+  </ion-list>
+
+  <!-- Botão para limpar o carrinho -->
+  <ion-button expand="full" class="Botaolimp" (click)="clearCart()">Limpar Carrinho</ion-button>
+
+  <!-- Template de carrinho vazio -->
+  <ng-template #emptyCart>
+    <ion-item>
+      <ion-label>
+        <h2>Seu carrinho está vazio!</h2>
+      </ion-label>
+    </ion-item>
+  </ng-template>
+</ion-content>
+
+<!-- Rodapé com total e botão para finalizar -->
+<ion-footer>
+  <ion-toolbar>
+    <h2>Total: {{ getTotal() | currency: 'BRL' }}</h2>
+    <ion-button class="corpadrao" slot="end" (click)="finalizar()">Finalizar
+      <ion-icon name="enter-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

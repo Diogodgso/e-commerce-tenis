@@ -1,0 +1,27 @@
+<ion-content [fullscreen]="true">
+  <ion-card class="login-container">
+
+    <ion-card-header>
+      
+      
+      <div>
+        <img class="imagemplazza" src="assets/icon/plazza tenis.png" alt="logo"/>
+      </div>
+      <h2>Login</h2>
+    </ion-card-header>
+
+    <ion-input type="email" label="Email" label-placement="floating" fill="outline" placeholder="Meu@email.com"
+      [(ngModel)]="email" required>
+    </ion-input>
+
+
+    <ion-input type="password" label="Senha" label-placement="floating" fill="outline" placeholder="Sua Senha"
+      [(ngModel)]="senha" required>
+      <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+    </ion-input>
+
+    <ion-button expand="block" (click)="login()">Entrar</ion-button>
+
+    <p>Não tem uma conta? <a (click)="navigateToNovaPagina()"> Crie uma aqui</a></p>
+  </ion-card>
+</ion-content>

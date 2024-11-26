@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar class="corpadrao">
+    <ion-title class="titulo">{{ item.name }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="fecharModal()" fill="clear">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <img class="custom-image" [src]="item.imageUrl" alt="{{ item.name }}" />
+    <ion-card-header>
+      <ion-card-title>{{ item.name }}</ion-card-title>
+      <ion-card-subtitle>{{ item.valor | currency: 'BRL' }}</ion-card-subtitle>
+    </ion-card-header>
+  </ion-card>
+
+  <div class="tamanho-title">
+    <h3>Escolha um tamanho:</h3>
+    <ion-segment>
+      <ion-segment-button *ngFor="let tamanho of tamanhos" (click)="selecionarTamanho(tamanho)"
+        class="tamanho-segment-button">
+        {{ tamanho }}
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <ion-item>
+    <ion-label position="floating">Quantidade</ion-label>
+    <ion-input [(ngModel)]="quantity" type="number" min="1" step="1" class="quantidade-input"></ion-input>
+  </ion-item>
+
+  <h3 class="tamanho-title"> Descrição do Produto</h3>
+  <ion-card-content>
+    <p>{{ item.description }}</p>
+  </ion-card-content>
+</ion-content>
+
+<footer>
+  <ion-button expand="full" (click)="adicionarAoCarrinho()" color="success">Comprar</ion-button>
+</footer>
